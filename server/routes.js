@@ -19,7 +19,7 @@ module.exports = function(app, upload) {
     app.post('/api/lineups', lineups.addLineup);
     app.put('/api/lineups/:id', lineups.updateLineup);
     app.get('*', function(req, res){
-    	res.sendFile(req.url, {root: __dirname});
+    	res.sendFile(req.url, {root: __dirname+"/../"});
     });
 
 }
