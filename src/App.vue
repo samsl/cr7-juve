@@ -2,7 +2,7 @@
   <div id="app">
     <div class="title">
       <div class="title-img">
-              <img src="./assets/img/cristiano-ronaldo-to-juventus.jpg">
+              <img src="/static/img/cristiano-ronaldo-to-juventus.jpg">
           </div>
           <div class="goals-number">
               {{scores}}
