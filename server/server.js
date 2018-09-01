@@ -23,4 +23,6 @@ var app = express();
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 require('./routes')(app, upload);
-app.listen(9000);
+const port = process.env.PORT || 9000;
+
+app.listen(port);
