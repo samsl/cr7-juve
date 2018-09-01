@@ -1,0 +1,61 @@
+$gold: #FFD700;
+$blue: #337ab7;
+$green: #5cb85c;
+$font: Roboto;
+$silver: #9a9a9a;
+$grey: #f2f2f2;
+@mixin centralize {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+@mixin scale($ratio) {
+    content: '';
+    display: block;
+    padding-bottom: $ratio;
+}
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+a {
+	text-decoration: none;
+	color: inherit;
+}
+button {
+        margin: 0px 10px;
+        padding: 15px 32px;
+        color: black;
+        background-color: $gold;
+        border-radius: 12px;
+        font-size: 24px;
+        text-decoration: none;
+        &:focus {
+            outline: 0;
+        }
+    }
+.small-img {
+    width: 30px;
+    object-fit: cover;
+    margin: 0px 10px;
+    vertical-align: middle;
+    padding: 5px 0px;
+}
+.medium-img {
+    width: 50px;
+    object-fit: cover;
+    margin: 0px 10px;
+    vertical-align: middle;
+    padding: 5px 0px;
+    overflow: hidden;
+}
+.large-img {
+    width: 100px;
+    object-fit: cover;
+    margin: 0px 10px;
+    vertical-align: middle;
+    padding: 5px 0px;
+}
+
+
