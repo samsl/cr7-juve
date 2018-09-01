@@ -8,7 +8,7 @@
 </template>
 <script>
 	
-    import videoList from './videoList.vue'    
+    import VideoList from './VideoList'    
     import UploadForm from './UploadForm'
     import {mapGetters} from 'vuex'
 	export default {
@@ -199,7 +199,7 @@
         }
     },
 	components: {
-			videoList, UploadForm
+			VideoList, UploadForm
 		}
 	}
 </script>
