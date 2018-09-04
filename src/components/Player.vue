@@ -4,19 +4,15 @@
 <script>
 	export default({
 		props: ['player', 'up'],
-		// data: function(){
-		// 	return {
-		// 		up: this.up,
-		// 	}
-		// },
+
 		methods: {
 			substitution(){		
 				const parent = this.$parent;
 				const positions = parent.lineups[parent.current].lineups		
 				if (!this.up) {
 					const lineup = {
-						"top": "450px",
-						"left": "150px",
+						"top": "50%",
+						"left": "50%",
 						"player": this.player
 					}
 					

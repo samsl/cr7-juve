@@ -3,12 +3,11 @@
 </template>
 <script>
 	export default {
-		props: ["lineup", "idx", "position"],		
+		props: ["lineup", "idx", "position", "width", "height"],		
 		methods:{
-			dragstart($event){				
-				const left = parseInt(this.position.left.slice(0,-2), 10);
-				const top = parseInt(this.position.top.slice(0,-2), 10);
-				
+			dragstart($event){					
+				const left = parseInt(this.position.left.slice(0,-1), 10)*this.width/100;
+				const top = parseInt(this.position.top.slice(0,-1), 10)*this.height/100;
 				const offset_data = (left-event.clientX) + "," + (top-event.clientY) + "," + this.idx; 
 				event.dataTransfer.setData("text/plain", offset_data);
 			}

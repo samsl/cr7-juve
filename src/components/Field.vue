@@ -1,7 +1,7 @@
 <template>
 	<div class="field-container" @dragover="dragover" @drop="drop">
-		<div class="field">		
-			<lineup v-for="(lineup, idx) in lineups" :lineup="lineup" :idx="idx" :position="compose(lineup)" :key="lineup._id"></lineup>
+		<div class="field" ref="field">		
+			<lineup v-for="(lineup, idx) in lineups" :lineup="lineup" :idx="idx" :position="compose(lineup)" :key="lineup._id" :width="width()" :height="height()"></lineup>
 			<div class="top-left-corner"></div>
 			<div class="top-right-corner"></div>
 			<div class="bottom-left-corner"></div>
@@ -39,6 +39,12 @@ import Lineup from "./Lineup"
 			 Lineup
 		},
 		methods:{
+			width(){
+				return this.$refs.field.clientWidth;
+			},
+			height(){
+				return this.$refs.field.clientHeight;
+			},
 			compose(lineup){
 				return {
 					"top": lineup.top, 
@@ -54,8 +60,8 @@ import Lineup from "./Lineup"
 			drop(event){	
 			event.preventDefault();			
 				const offset = event.dataTransfer.getData("text/plain").split(',');
-				const left = (event.clientX + parseInt(offset[0], 10)) + "px";
-				const top = (event.clientY + parseInt(offset[1], 10)) + "px";
+				const left = (event.clientX + parseInt(offset[0], 10))/this.width()*100 + "%";
+				const top = (event.clientY + parseInt(offset[1], 10))/this.height()*100 + "%";
 				const idx = parseInt(offset[2], 10);
 				this.lineups[idx].top = top;
 				this.lineups[idx].left = left;						
