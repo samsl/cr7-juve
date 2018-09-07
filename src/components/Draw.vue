@@ -1,21 +1,24 @@
 <template>
 	<div id="draw-container">
 		<div v-show="!finished">
-			<div class="pots" v-for="pot in pots">
-				<div class="big-icon">
+			<div class="pots mobile" v-for="pot in pots">
+				<div class="medium-icon">
 				<font-awesome-icon  :icon="icon[pot.pot-1]"/>
 				</div>
-				<div class="pot-clubs" v-for="club in pot.clubs">
-					<img class="medium-img" :src="'/static/img/club logo/' + club.logo">
+				<div class="medium-img" v-for="club in pot.clubs">
+					<img :src="'/static/img/club logo/' + club.logo">
+					
 				</div>	
 				
 			</div>
-			<div class="pots" v-show="posibleGroup.length>0"><div class="big-icon"><font-awesome-icon  class="big-icon" icon="info"/></div><span v-for="g in posibleGroup">{{g}}</span></div>
+			<div class="pots" v-show="posibleGroup.length>0"><div class="medium-icon"><font-awesome-icon icon="info"/></div><span class="medium-icon mobile-tight" v-for="g in posibleGroup">{{g}}</span></div>
 			<div v-show="!finished" id="lucky-box">
-				<div v-show="clubStage" class="draw-img">
-					<img class="large-img" :src="'/static/img/club logo/' + currentClub.logo"/>
+			
+					<div v-show="clubStage" class="large-img centralize">
+					<img  :src="'/static/img/club logo/' + currentClub.logo"/>
+					
 				</div>
-				<div v-show="!clubStage" class="draw-group">
+				<div v-show="!clubStage" class="centralize big-icon">
 					{{group}}
 				</div>
 				<div v-show="!start">
@@ -30,12 +33,16 @@
 			</div>
 		</div>
 		<div class="groups">
-			<div class="group" v-for="group in distribution">			
+			<div class="group mobile-tight" v-for="group in distribution">			
 				<table>
-					<th>Group {{group.group}}</th>
+					<th><span class="mobile-hide">Group</span> {{group.group}}</th>
 					<tr v-for="club in group.clubs">
 						<td>
-							<img  v-show="club.logo" class="small-img" :src="'/static/img/club logo/' + club.logo">{{club.name}}
+							<div class="centralize">
+							<div v-show="club.logo" class="small-img">
+							<img  :src="'/static/img/club logo/' + club.logo"></div>
+							<span class="mobile-hide">{{club.name}}</span>
+							</div>
 						</td>	
 					</tr>					
 				</table>
@@ -575,10 +582,16 @@
 		margin: 20px auto;
 		padding: 50px 0px;
 	}
-	.big-icon{
+	.medium-icon{
 		font-size: 50px;
 		color: black;
 		width: 50px;
+		text-align: center;
+	}
+	.big-icon{
+		font-size: 120px;
+		font-size: 80px;
+		color: black;
 		text-align: center;
 	}	
 	.pots{
@@ -593,6 +606,10 @@
 			margin: 0 10px;
 		}
 		
+	}
+	.pot-clubs{
+		flex-grow: 1;
+		flex-shrink: 1;
 	}
 	.groups{
 		display: flex;
@@ -618,25 +635,22 @@
 			background: $grey;
 			margin: 5px 0;
 		}
-		td{
-			// color: $blue;
+		td{			
 			font-size: 18px;
-			height: 42px;
-			padding-left: 10px;
+			height: 42px;			
 		}
 	}
 	#lucky-box{
 		margin: 20px auto;
 		text-align: center;
-		.draw-group,.draw-img{
+		.draw-group{
 			width: 120px;
 			height: 100px;
 			margin: 0 auto;
-			margin-bottom: 10px;		
+			margin-bottom: 10px;
+			font-size: 80px;		
 		}
-		.draw-group {					
-			font-size: 80px;
-		}
+		
 	}
 
 </style>

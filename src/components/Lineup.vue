@@ -22,4 +22,11 @@
 	height: 80px;
 	text-align: center;
 }
+@media only screen and (max-width: 768px){
+	.lineup-player{
+		width: 30px;
+		height: 30px;
+		text-align: center;
+	}
+}
 </style>

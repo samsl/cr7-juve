@@ -1,5 +1,5 @@
 $gold: #FFD700;
-$blue: #337ab7;
+$blue:  #005792;
 $green: #5cb85c;
 $font: Roboto;
 $silver: #9a9a9a;
@@ -15,8 +15,10 @@ $grey: #f2f2f2;
     padding-bottom: $ratio;
 }
 * {
-    box-sizing: border-box;
+    
+    box-sizing: border-box !important;
     margin: 0;
+    padding: 0;
 }
 
 a {
@@ -25,37 +27,81 @@ a {
 }
 button {
         margin: 0px 10px;
-        padding: 15px 32px;
+        
         color: black;
         background-color: $gold;
         border-radius: 12px;
-        font-size: 24px;
+        font-size: 20px;
+        text-align: center;
+        height: 40px;
+        padding: 0 40px;
+        line-height: 40px;
+        display: inline-block;;
         text-decoration: none;
         &:focus {
             outline: 0;
         }
     }
-.small-img {
-    width: 30px;
+img {
+    max-width: 100%;
     object-fit: cover;
-    margin: 0px 10px;
-    vertical-align: middle;
-    padding: 5px 0px;
+    height: auto;    
+}
+.small-img {
+    width: 40px;
+    padding: 5px;   
 }
 .medium-img {
-    width: 50px;
-    object-fit: cover;
-    margin: 0px 10px;
-    vertical-align: middle;
-    padding: 5px 0px;
-    overflow: hidden;
+    width: 60px;
+    padding: 5px;   
 }
-.large-img {
-    width: 100px;
-    object-fit: cover;
-    margin: 0px 10px;
-    vertical-align: middle;
-    padding: 5px 0px;
+.large-img{
+    width: 110px;
+    padding: 5px;
 }
-
+.centralize{
+    @include centralize();
+    margin: 0 auto;
+}
+@media only screen and (max-width: 768px){
+    *{
+        font-size: 14px;
+    }
+    .mobile-hide{
+        display: none;
+    }
+    .mobile {
+        width: 100% !important;
+    }
+    .medium-img{
+        width: 40px;
+    }
+    .large-img{
+        width: 60px;
+    }
+    .mobile-tight{
+        padding: 5px !important;
+        margin: 0 0 !important;
+    }
+    .medium-icon{
+        width: 40px !important;
+        font-size: 30px !important;
+    }
+    .big-icon{
+        width: 60px !important;
+        font-size: 50px !important;
+    }
+    .form-group{
+        width: 100% !important;
+    }
+    .player {
+        width: 50px !important;
+        font-size: 14px;
+    }
+    .players{
+        height: 130px;
+        overflow: scroll;
+    }
+    
+}
 

@@ -1,10 +1,10 @@
 <template>
-  <div id="app">
+  <div id="app" class="mobile">
     <div class="title">
       <div class="title-img">
               <img src="static/img/cristiano-ronaldo-to-juventus.jpg">
           </div>
-          <div class="goals-number">
+          <div class="goals-number mobile-hide">
               {{scores}}
           </div>
       </div>
@@ -39,9 +39,7 @@ export default {
 body {
     background: black;
     font-family: $font;
-     min-width:1700px;        /* Suppose you want minimum width of 1000px */
-   width: auto !important;  /* Firefox will set width as auto */
-   
+    
 }
 
 #app{
@@ -71,4 +69,5 @@ body {
         object-fit: cover;
     }
 }
+
 </style>

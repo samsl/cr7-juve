@@ -2,7 +2,7 @@
 
 	<nav>
 		<ul>
-			<li v-for="nav in navs"><router-link :to="nav.link"><span>{{nav.name}}</span></router-link></li>
+			<li class="mobile-tight" v-for="nav in navs"><router-link :to="nav.link"><span>{{nav.name}}</span></router-link></li>
 		</ul>		
 	</nav>
 	
@@ -19,17 +19,21 @@
 </script>
 <style lang="scss">
 	nav {
+		
 		ul {
+			width: 100%;
 			list-style-type: none;
 			@include centralize;
+			font-size: 20px;
 		}
 		li {
 			margin: 5px auto;
 			padding: 0px 10px;
-			font-size: 20px;
+			
 			color: $silver !important;
 			
 			span {
+
 				&:hover{
 					border-bottom: 2px solid white;
 					color: white;
@@ -38,5 +42,6 @@
 		}
 
 	}
+	
 	
 </style>

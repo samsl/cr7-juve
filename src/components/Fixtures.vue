@@ -3,17 +3,30 @@
         <upload-form :title="'Add a new match?'" :button="'YES'" :fields="fields" :uploadEvent="uploadMatch">
         </upload-form>
         <div id="fixtures">
-        <table v-for="group in groupMatch">
+        <table class="mobile" v-for="group in groupMatch">
             <caption>{{group.key | moment("MMMM YYYY")}}</caption>
             <tr v-for="match in group.matches">
-                <td>{{match.date | moment("dddd, MMMM Do YYYY")}}</td>
-                <td>{{match.date | moment("h:mm:ss a")}}</td>
-                <td class="match-logo"><img class="small-img" :src="'/static/img/league logo/'+ match.matchType + '.png'"></td>
-                <td class="team-home">{{match.home.name}}
-                    <img class="small-img" :src="'/static/img/club logo/'+match.home.logo">
+                <td class="">{{match.date | moment("Do")}}</td>
+                <td class="">{{match.date | moment("HH:mm:ss")}}</td>
+                <td class="match-logo">
+                	<div class="small-img"><img :src="'/static/img/league logo/'+ match.matchType + '.png'"></div></td>
+                <td class="team-home">
+                	<div class="team-home-container"><span class="mobile-hide">{{match.home.name}}</span>
+                	<div class="small-img">
+                    	<img :src="'/static/img/club logo/'+match.home.logo">
+                	</div>
+                </div>
                 </td>
                 <td class="result-board">{{result(match.result)}}</td>
-                <td class="team-away"><img class="small-img" :src="'/static/img/club logo/'+match.away.logo">{{match.away.name}}</td>
+                <td class="team-away">
+                	<div class="team-away-container">
+					<div class="small-img">
+                		<img :src="'/static/img/club logo/'+match.away.logo">
+                	</div>
+                	<span class="mobile-hide">{{match.away.name}}</span>
+                	</div>
+                </td>
+                	
             </tr>
             
         </table>
@@ -189,7 +202,7 @@
  	@include centralize;
  	background: white;
  	flex-wrap: wrap;
- 	padding: 40px 0px;
+ 	
   caption {
   	color: black;
   	font-weight: bold;
@@ -225,13 +238,24 @@
 	width: 4%;
 }
   .team-home {
-  	text-align: right;
   	width: 25%;
+  	
+
     }
- 	.team-away {
-    text-align: left;
-    width: 25%;   
-	}
+.team-home-container{
+	justify-content: flex-end;  	
+	display: flex;
+	align-items: center;
+}
+.team-away {
+
+width: 25%;   
+}
+.team-away-container{
+	justify-content: flex-start;  	
+	display: flex;
+	align-items: center;
+}
  .result-board {
  	width: 4%;
     background: $grey;

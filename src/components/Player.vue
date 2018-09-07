@@ -1,5 +1,5 @@
 <template>
-	<div class="player" @click="substitution"><img class="medium-img" :src="'/static/img/players/' + player.logo" /><font-awesome-icon  v-show="up" icon="plus"/></div>		
+	<div class="player" @click="substitution"><div class="medium-img"><img :src="'/static/img/players/' + player.logo" /></div><div class="badge" :class="{up: up}"><font-awesome-icon icon="plus"/></div></div>		
 </template>
 <script>
 	export default({
@@ -33,14 +33,20 @@
 	})
 </script>
 <style lang="scss">
-.player{
-	margin: 0px 5px;
-	
-	width: 100px;
-	height: 80px;
-	
-	display: flex;
+.badge {
+	position: absolute;
+	right: 0px;
+	top: 0px;
+}
+.up{
 	color: $gold;
-
+}
+.player{
+	width: 80px;
+	margin: 0px 5px;
+	position: relative;
+	
+	color: $blue;
+	font-size: 20px;
 }
 </style>

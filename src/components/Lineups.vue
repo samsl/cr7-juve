@@ -11,12 +11,14 @@
 				</li>
 			</ul>
 		</div>
-		<div class="players">
-			<player v-for="player in players" :player="player" :key="player._id" :up="existing(player)"></player>
-		</div>
-		<div class="lineup">			
-			<field :lineups="currentLineup"></field>		
-			<button @click="save">Save</button>
+		<div class="content">
+			<div class="players">
+				<player v-for="player in players" :player="player" :key="player._id" :up="existing(player)"></player>
+			</div>
+			<div class="lineup">			
+				<field :lineups="currentLineup"></field>		
+				<button @click="save">Save</button>
+			</div>
 		</div>
 
 	</div>
@@ -158,7 +160,7 @@
 }
 .active {
 	width:100%;
-	border: 2px solid $gold;
+	border: 3px solid $gold;
 	border-bottom: none;
 	position: relative;
 	&:after{
@@ -167,27 +169,38 @@
 		width: 100%;
 		left:0px;
 		position: absolute;
-		bottom: -2px;
-		border: 1px solid #374955;
+		bottom: -3px;
+		border: 3px solid #374955;
+		z-index: 10;
 	}
 	color: $gold;
 	height: 40px !important;
 }	
 .players{
-	width: 30%;
-	padding: 20px 20px;
-	@include centralize;
+	width: 360px;
+	padding: 20px 0px;
+	display: flex;
+	align-items: center;
+
 	flex-wrap: wrap;
-	border: 2px solid $gold;
-	border-right: none;
-	background: #005792;
+
+	background: $blue;
+	&:after{
+		content: "";
+		flex-grow: 999;
+	}
 
 }
-.lineup{	
-	border: 2px solid $gold;
-	border-left: none;
+.content {
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	border: 3px solid $gold;
+}
+.lineup{
+
 	background: green;
-	width: 70%;
+	flex-grow: 1;
 	margin: 0 auto;	
 
 	
@@ -203,12 +216,16 @@
 }
 
 #lineup-container{
-	background: white;
-	padding: 0px 0px;
-	display: flex;
+	
+	display:flex;
 	flex-wrap: wrap;
 	margin: 0 auto;
-	width: 80%;
+	width: 100%;
+}
+@media only screen and (max-width: 768px){
+  .lineup, .players{
+    width:100%;
+  }  
 }
 
 </style>

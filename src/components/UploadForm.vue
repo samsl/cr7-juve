@@ -2,7 +2,7 @@
 	<div class="jumbotron">
 		{{title}}
 		<button v-show="!form" @click="form=true">{{button}}</button>
-		<div v-show="form" class="upload-form">
+		<div v-show="form" class="upload-form mobile">
 			<div  class="form-group" v-for="field in fields">
 	            <label>{{field.name}}:</label>
 	            <img-select v-if="field.type === 'imgSelect'" :options="field.options" v-model="$parent[field.vueName]" @input="sendToParent(field)"></img-select>
@@ -69,8 +69,9 @@
 	.form-group {
 	    width: 50%;
 	    display: flex;
+	    align-items: center;
 	    padding: 10px 10px;
-	    
+	    margin: 5px auto;
 	    label {
 	        width: 30%;
 	    }
@@ -85,7 +86,9 @@
 	    input {
 	        padding: 0px 10px;
 	        font-size: 20px;
+	        height: 34px;
 	        flex-grow: 1;
+	        border: 1px solid rgba(60,60,60,.26);
 	    }
 	    select{
 	        height: 34px;
@@ -123,13 +126,13 @@
 	}
 	.jumbotron {
     width: 100%;
-    margin: 20px auto;
+    
     background-color: white;
     font-size: 30px;
     flex-wrap: wrap;
     font-weight: bold;
     @include centralize;
-    padding: 20px 0px;
+    padding: 20px 20px;
     
 	}
 	.file-uploader {
@@ -138,8 +141,7 @@
 	    width: 30% !important;
 	    border: 1px solid #ccc;
 	    border-radius: 8px;
-	    font-family: $font;
-	    font-size: 20px;
+	    font-family: $font;	 
 	    text-align: center;
 	    padding: 0px 5px;
 
