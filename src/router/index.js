@@ -4,26 +4,35 @@ import Videos from '../components/Videos'
 import Fixtures from '../components/Fixtures'
 import Lineups from '../components/Lineups'
 import Draw from '../components/Draw'
+import Video from '../components/Video'
+import Home from "../components/Home"
 
 Vue.use(Router);
 
 export default new Router({
   routes: [{
+    path: '/',
+    component: Home
+  },{
     path: '/goals',
-    name: 'GOALS',
+    name: 'goals',
     component: Videos
   },
   	{
   		path: '/fixtures',
-  		name:'FIXTURES',
+  		name:'fixtures',
   		component: Fixtures
   	},{
       path: '/lineups',
-      name: 'LINEUPS',
+      name: 'lineups',
       component: Lineups
     },{
       path: '/draw',
-      name: 'DRAW',
+      name: 'draw',
       component: Draw
+    },{
+      path: '/video/:id',
+      name: 'video', 
+      component: Video
     }]
 })

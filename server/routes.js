@@ -7,6 +7,8 @@ module.exports = function(app, upload) {
     const matches = require('./controllers/matches_controller');
     const pots = require('./controllers/pot_controller');
     const lineups = require('./controllers/lineups_controller');
+    const rankings = require('./controllers/rankings_controller');
+    const shooters = require('./controllers/shooters_controller');
     app.post('/api/videos', videos.addVideo);
     app.get('/api/videos', videos.getVideos);
     app.post('/api/files',upload.single('file'), videos.upload);
@@ -18,6 +20,8 @@ module.exports = function(app, upload) {
     app.get('/api/lineups', lineups.allLineups);
     app.post('/api/lineups', lineups.addLineup);
     app.put('/api/lineups/:id', lineups.updateLineup);
+    app.get('/api/rankings', rankings.getRankings);
+    app.get('/api/shooters', shooters.getShooters);
     app.get('*', function(req, res){
     	res.sendFile(decodeURI(req.url), {root: __dirname+"/../"});
     });

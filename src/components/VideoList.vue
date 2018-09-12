@@ -1,6 +1,7 @@
 <template>
 	<div id="video-list">
-	<div class="video-container mobile" v-for="video in videos">        
+        <router-link :to="{name:'video', params:{id: video.title}}" v-for="video in videos" class="mobile">
+	<div class="video-container mobile" >               
         <div class="video"v-on:mouseover="playVideo(true, $event)" v-on:mouseout="playVideo(false, $event)">
 	    	<video muted>
 	    		<source :src="'/static/video/' + video.title" type="video/mp4"/> Your browser does not support the video tag.
@@ -14,7 +15,9 @@
         </div>
         <div class="video-date">{{video.date | moment("dddd, MMMM Do YYYY")}}
         </div>
+
    </div>
+   </router-link>
 </div>
 </template>
 <script>
@@ -44,7 +47,7 @@ export default ({
 }
 .video-container {
     width: 210px;
-    margin: 5px;
+    margin: 5px 0px;
     background: white;
     border: 2px solid white;
 }
