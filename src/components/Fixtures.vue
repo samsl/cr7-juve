@@ -1,6 +1,6 @@
 <template>
 	 <div >  
-        <upload-form :title="'Add a new match?'" :button="'YES'" :fields="fields" :uploadEvent="uploadMatch">
+        <upload-form v-if="auth" :title="'Add a new match?'" :button="'YES'" :fields="fields" :uploadEvent="uploadMatch">
         </upload-form>
         <div id="fixtures">
         <table class="mobile" v-for="group in groupMatch">
@@ -76,7 +76,10 @@
 		this.getAllMatches();
 
 	},
-	computed: {				
+	computed: {		
+		auth(){
+			return this.$store.getters.authUser;
+		},	
 		fields(){			
 			return [{
 						name: "Date",
@@ -199,6 +202,7 @@
 </script>
 <style lang="scss">
  #fixtures{
+ 	padding: 20px 0px;
  	@include centralize;
  	background: white;
  	flex-wrap: wrap;

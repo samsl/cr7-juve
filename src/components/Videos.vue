@@ -1,6 +1,6 @@
 <template>
 	<div id="videos">		
-        <upload-form :title="'Upload a CR7 goal video now ?'" :button="'GOAL!'" :fields="fields" :uploadEvent="uploadVideo"></upload-form>
+        <upload-form v-if="auth" :title="'Upload a CR7 goal video now ?'" :button="'GOAL!'" :fields="fields" :uploadEvent="uploadVideo"></upload-form>
         <video-list :videos="videos">            
         </video-list>   
        
@@ -87,6 +87,9 @@
     }
     },
     computed: {
+        auth(){
+            return this.$store.getters.authUser;
+        },
         videos(){
             return this.$store.getters.videos;
         },      

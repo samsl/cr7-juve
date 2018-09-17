@@ -17,7 +17,7 @@
 			</div>
 			<div class="lineup">			
 				<field :lineups="currentLineup"></field>		
-				<button @click="save">Save</button>
+				<button v-if="auth" @click="save">Save</button>
 			</div>
 		</div>
 
@@ -42,6 +42,9 @@
 			
 		},
 		computed:{
+			auth(){
+				return this.$store.getters.authUser;
+			},
 			currentLineup(){
 				if (this.lineups[this.current]) {
 					return this.lineups[this.current].lineups;
