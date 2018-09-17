@@ -1,11 +1,12 @@
 <template>
-	<div id="video-list">
-        <router-link :to="{name:'video', params:{id: video.title}}" v-for="video in videos" class="mobile">
-	<div class="video-container mobile" >               
+	<div id="video-list">        
+	<div class="video-container mobile mobile-tight" v-for="video in videos">               
         <div class="video"v-on:mouseover="playVideo(true, $event)" v-on:mouseout="playVideo(false, $event)">
+             <router-link :to="{name:'video', params:{id: video.title}}" v-for="video in videos" >
 	    	<video muted>
 	    		<source :src="'/static/video/' + video.title" type="video/mp4"/> Your browser does not support the video tag.
 	    	</video>
+        </router-link>
     	</div>
         <div class="video-opponent"><span class="video-label">Opponent:</span><div class="small-img"><img :src="'/static/img/club logo/'+video.opponent.logo"></div>
         </div>
@@ -17,7 +18,7 @@
         </div>
 
    </div>
-   </router-link>
+  
 </div>
 </template>
 <script>
@@ -42,14 +43,17 @@ export default ({
 
 #video-list {
 	display: flex;
-	flex-wrap: nowrap;
-    
+	flex-wrap: wrap;
+
 }
 .video-container {
     width: 210px;
-    margin: 5px 0px;
+    margin: 5px 5px;
     background: white;
     border: 2px solid white;
+    &:first-child{
+        margin-left: 0px;
+    }
 }
 .video {    
 	position: relative;    

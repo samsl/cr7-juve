@@ -220,7 +220,7 @@
 	display:flex;
 	flex-wrap: wrap;
 	margin: 0 auto;
-	width: 100%;
+	
 }
 @media only screen and (max-width: 768px){
   .lineup, .players{

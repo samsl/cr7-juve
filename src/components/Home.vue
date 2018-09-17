@@ -1,6 +1,6 @@
 <template>
 	<div id="home">
-	<div class="container">
+	<div class="table-container">
 		<table class="mobile">
 			<caption>Serie A</caption>
 			<th>Pos.</th>
@@ -25,7 +25,7 @@
 			</tr>
 		</table>
 	</div>
-		<div class="container">
+		<div class="table-container">
 		<table class="mobile">
 			<caption>Top Scores
 				<select v-model="match" @onchange="sort()">
@@ -123,7 +123,7 @@
 	}
 </script>
 <style lang="scss">
-	.container {
+	.table-container {
 		margin-bottom: 1px;
 		padding: 20px 0px;
 		@include centralize;

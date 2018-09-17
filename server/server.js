@@ -10,6 +10,7 @@ require('./models/pot_model.js');
 require('./models/lineup_model.js');
 require('./models/ranking_model.js');
 require('./models/shooter_model.js');
+require('./models/user_model.js');
 var multer  = require('multer');
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {

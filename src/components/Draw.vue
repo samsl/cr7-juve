@@ -579,7 +579,6 @@
 <style lang="scss">
 	#draw-container{
 		background: white;
-		margin: 20px auto;
 		padding: 50px 0px;
 	}
 	.medium-icon{

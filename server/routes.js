@@ -9,6 +9,7 @@ module.exports = function(app, upload) {
     const lineups = require('./controllers/lineups_controller');
     const rankings = require('./controllers/rankings_controller');
     const shooters = require('./controllers/shooters_controller');
+    const users = require('./controllers/users_controller');
     app.post('/api/videos', videos.addVideo);
     app.get('/api/videos', videos.getVideos);
     app.post('/api/files',upload.single('file'), videos.upload);
@@ -22,6 +23,8 @@ module.exports = function(app, upload) {
     app.put('/api/lineups/:id', lineups.updateLineup);
     app.get('/api/rankings', rankings.getRankings);
     app.get('/api/shooters', shooters.getShooters);
+    app.post('/api/users', users.register);
+    app.post('/api/auth', users.login);
     app.get('*', function(req, res){
     	res.sendFile(decodeURI(req.url), {root: __dirname+"/../"});
     });

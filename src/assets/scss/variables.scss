@@ -29,7 +29,7 @@ a {
 }
 button {
         margin: 0px 10px;
-        
+        max-height: 100%;
         color: black;
         background-color: $gold;
         border-radius: 12px;
@@ -49,6 +49,17 @@ img {
     object-fit: cover;
     height: auto;    
 }
+body {
+   
+    font-family: $font;
+    
+}
+.from-right{
+    height: 100%;
+    display:flex;
+    justify-content: flex-end;
+    align-items: center;
+}
 .small-img {
     width: 40px;
     padding: 5px;   
@@ -63,6 +74,10 @@ img {
 }
 .centralize{
     @include centralize();
+    margin: 0 auto;
+}
+.container{
+    width: 60%;
     margin: 0 auto;
 }
 @media only screen and (max-width: 768px){

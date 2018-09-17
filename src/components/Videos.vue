@@ -88,7 +88,7 @@
     },
     computed: {
         videos(){
-            return this.$store.state.videos;
+            return this.$store.getters.videos;
         },      
         fields(){
             return [
