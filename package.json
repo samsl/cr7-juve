@@ -11,7 +11,7 @@
   "scripts": {
     "vue": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules",
-    "server": "pm2 start server/server.js --watch --name cr7",
+    "server": "cross-env NODE_ENV=development pm2 start server/server.js --watch --name cr7",
     "postinstall": "npm run build",
     "start": "node server/server.js"
   },

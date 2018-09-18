@@ -1,7 +1,7 @@
 var express = require('express');
 var mongoose = require('mongoose');
-const db = mongoose.connect('mongodb://sam:test123@ds239682.mlab.com:39682/cr7', { useNewUrlParser: true });
-//const db = mongoose.connect('mongodb://localhost:28008/cr7', { useNewUrlParser: true });
+const config = require('./config');
+const db = mongoose.connect(config.db, { useNewUrlParser: true });
 require('./models/video_model.js');
 require('./models/club_model.js');
 require('./models/player_model.js');
