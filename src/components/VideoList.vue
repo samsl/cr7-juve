@@ -1,7 +1,7 @@
 <template>
 	<div id="video-list">        
 	<div class="video-container mobile mobile-tight" v-for="video in videos">               
-        <div class="video">
+        <div class="video" preload="none">
              <router-link :to="{name:'video', params:{id: video.title}}">
 	    	<video muted>
 	    		<source :src="'/static/video/' + video.title" type="video/mp4"/> Your browser does not support the video tag.

@@ -3,10 +3,10 @@
     	<header id="header-banner">
     		<div class="container mobile from-right">
             <!-- <font-awesome-icon icon="user"/> -->
-    				<router-link v-show="!auth" class="highlight" :to="{name:'login'}">Login</router-link>
+    				<router-link v-show="!auth" class="banner-link" :to="{name:'login'}">Login</router-link>
             <div v-show="auth">
               <span>{{auth}}</span>
-              <span class="highlight" @click="logout">Logout</span>
+              <span class="banner-link" @click="logout">Logout</span>
             </div>
     		
     		</div>
@@ -74,7 +74,7 @@ export default {
 .title {
     display: flex; 
 }
-.highlight{
+.banner-link{
 	border: 2px solid $gold;
 	padding: 0px 10px;
 	border-radius: 5px;
