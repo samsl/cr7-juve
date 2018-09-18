@@ -1,7 +1,7 @@
 <template>
 	<nav>
 		<ul>
-			<li class="mobile-tight" v-for="nav in navs"><router-link :to="nav.link"><span>{{nav.name}}</span></router-link></li>
+			<li class="mobile-tight" v-for="nav in navs"><router-link :to="{name:nav.link}"><span>{{nav.name}}</span></router-link></li>
 		</ul>		
 	</nav>	
 </template>
@@ -9,7 +9,7 @@
 	export default ({
 		data: function(){
 			return {
-				navs: [{name:"HOME", link:"/pages/"}, {name:"GOALS", link:"/pages/goals"}, {name:"FIXTURES", link:"/pages/fixtures"}, {name:"LINEUPS", link:"/pages/lineups"},{name:"DRAW", link:'/pages/draw'}]
+				navs: [{name:"HOME", link:"home"}, {name:"GOALS", link:"goals"}, {name:"FIXTURES", link:"fixtures"}, {name:"LINEUPS", link:"lineups"},{name:"DRAW", link:'draw'}]
 			}
 		}
 	})

@@ -3,7 +3,7 @@
     	<header id="header-banner">
     		<div class="container mobile from-right">
             <!-- <font-awesome-icon icon="user"/> -->
-    				<router-link v-show="!auth" class="highlight" to="/login">Login</router-link>
+    				<router-link v-show="!auth" class="highlight" :to="{name:'login'}">Login</router-link>
             <div v-show="auth">
               <span>{{auth}}</span>
               <span class="highlight" @click="logout">Logout</span>
@@ -46,7 +46,7 @@ export default {
   methods:{
         logout(){
         this.$store.commit('logout');
-        this.$router.push("/login");
+        this.$router.push({name:'login'});
      }
    },
   components:{
