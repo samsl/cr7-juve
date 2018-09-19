@@ -3,8 +3,8 @@
 	<div class="video-container mobile mobile-tight" v-for="video in videos">               
         <div class="video" >
              <router-link :to="{name:'video', params:{id: video.title}}">
-	    	<video preload="load" controls="controls" muted v-on:mouseover="playVideo(true, $event)" v-on:mouseout="playVideo(false, $event)">
-	    		<source :src="'/static/video/' + video.title" type="video/mp4"/> Your browser does not support the video tag.
+	    	<video muted v-on:mouseover="playVideo(true, $event)" v-on:mouseout="playVideo(false, $event)">
+	    		<source :src="'/static/video/' + video.title + '#t=2'" type="video/mp4"/> Your browser does not support the video tag.
 	    	</video>
         </router-link>
     	</div>
