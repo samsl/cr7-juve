@@ -135,7 +135,7 @@
                         vueName: "assist"
                     }, {
                         name: "Video",
-                        type: "file",
+                        type: "text",
                         vueName: "file"
                     }
             ]
@@ -183,7 +183,7 @@
                 opponent: this.opponent.value,
                 shotType: this.shotType.value,
                 matchType: this.matchType.value,
-                title: this.file.name,
+                title: this.file,
                 time: this.time
             };
 
@@ -192,13 +192,7 @@
             }).catch(error => {
                 console.log(error);
             });
-            const formData = new FormData();
-            formData.append("file", this.file);
-            this.axios.post('/api/files', formData).then(response => {
-                console.log(response);                
-            }).catch(error => {
-                console.log(error);
-            });
+           
         }
     },
 	components: {

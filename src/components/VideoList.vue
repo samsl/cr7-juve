@@ -4,7 +4,7 @@
         <div class="video" >
              <router-link :to="{name:'video', params:{id: video.title}}">
 	    	<video muted v-on:mouseover="playVideo(true, $event)" v-on:mouseout="playVideo(false, $event)">
-	    		<source :src="'/static/video/' + video.title + '#t=2'" type="video/mp4"/> Your browser does not support the video tag.
+	    		<source :src="'https://drive.google.com/uc?export=download&id='+video.title+'#t=2'" type="video/mp4"/> Your browser does not support the video tag.
 	    	</video>
         </router-link>
     	</div>

@@ -14,7 +14,7 @@
 	             <label class="file-path" v-show="choose">{{fileName}}</label>
 	             </div>
 	             <datetime v-else-if="field.type ==='date'||field.type === 'datetime'" :type="field.type" v-model="$parent[field.vueName]"></datetime>
-	            <input v-else :type="field.type" :value="field.value" @change="sendToParent(field,$event.target.value)"/>     
+	            <input v-else :type="field.type" v-model="$parent[field.vueName]"/>     
 	        </div>
 	        <button @click="upload">Add</button>
 	        <button @click="form=false">Cancel</button>
