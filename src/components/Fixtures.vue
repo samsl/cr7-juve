@@ -5,7 +5,7 @@
         <div id="fixtures">
         <table class="mobile" v-for="group in groupMatch">
             <caption>{{group.key | moment("MMMM YYYY")}}</caption>
-            <tr v-for="match in group.matches">
+            <tr v-for="(match, idx) in group.matches">
                 <td class="">{{match.date | moment("Do")}}</td>
                 <td class="">{{match.date | moment("HH:mm:ss")}}</td>
                 <td class="match-logo">
@@ -17,7 +17,9 @@
                 	</div>
                 </div>
                 </td>
-                <td class="result-board">{{result(match.result)}}</td>
+                <td class="result-board"><div @dblclick="edit_line=idx;edit_group=group.key">
+				<div v-if="edit_line===idx&&group.key===edit_group&&auth" ><input type="text" :value="result(match.result)" @change="editResult(match,$event)"/></div>
+                <span v-else>{{result(match.result)}}</span></div></td>
                 <td class="team-away">
                 	<div class="team-away-container">
 					<div class="small-img">
@@ -38,6 +40,8 @@
 	export default ({
 		data: function(){
 			return {
+				edit_line: -1,
+				edit_group: -1,
 				location:null,
 				date: "",
 				opponent: null,				
@@ -74,9 +78,9 @@
 		},
 		mounted: function(){
 		this.getAllMatches();
-
+		
 	},
-	computed: {		
+	computed: {				
 		auth(){
 			return this.$store.getters.authUser;
 		},	
@@ -142,13 +146,28 @@
 			return groups;
 		}
 	},
-	methods: {	
+	methods: {
 		result(result){
 			if (result.length === 0 ){
 				return "-:-";
 			} else {
 				return result[0] + ":" + result[1];
 			}
+		},
+		editResult(match, $event){
+			const result = $event.target.value;
+			const results = result.split(':').map(r=>parseInt(r));
+			if (results.length === 2 && !isNaN(results[0]) && !isNaN(results[1])) {
+				match.result = results;
+				this.axios.put('/api/matches/' + match._id, match).then(response=>{
+
+				}).catch(err=>{
+					match.result=[];
+				})
+			} else {
+				match.result=[];
+			}
+			this.edit_line = -1;
 		},	
 		getClubs: function() {            
             this.axios.get("/api/clubs?competition=" + this.matchType.value).then(response => {
@@ -190,6 +209,7 @@
         getAllMatches: function(){
         	this.axios.get("/api/matches").then(response=>{
         			this.matches = response.data;
+        			
         		}).catch(error=>{
         			console.log(error);
         		});
@@ -263,5 +283,12 @@ width: 25%;
  .result-board {
  	width: 4%;
     background: $grey;
-    text-align: center; }
+    text-align: center; 
+	input {
+    	font-size: 18px;
+    	text-align: center;
+    	width: 100%;
+    }
+}
+    
 </style>

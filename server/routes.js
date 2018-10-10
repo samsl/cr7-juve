@@ -18,6 +18,7 @@ module.exports = function(app, upload) {
     app.get('/api/matches', matches.getAllMatches);
     app.get('/api/pots', pots.allPots);
     app.post('/api/matches', matches.addMatch);
+    app.put('/api/matches/:id', matches.updateMatch);
     app.get('/api/lineups', lineups.allLineups);
     app.post('/api/lineups', lineups.addLineup);
     app.put('/api/lineups/:id', lineups.updateLineup);

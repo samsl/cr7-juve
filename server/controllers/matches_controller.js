@@ -19,3 +19,13 @@ exports.getAllMatches = function(req, res){
 		}
 	})
 };
+exports.updateMatch = function(req, res){
+	const query = {'_id': req.params.id};
+	Match.findOneAndUpdate(query, req.body, {new:true}, function(err,match){
+		if (err) {
+			res.status(500).send(err);
+		} else {
+			res.json(match);
+		}
+	})
+}
