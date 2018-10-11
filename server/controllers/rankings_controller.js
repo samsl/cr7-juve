@@ -45,4 +45,15 @@ exports.getRankings = function(req, res) {
       res.json(datas);
     }
   })
+};
+exports.addResult = function(req, res){
+  const query = {'team': req.params.id};
+  console.log(req.body.score);
+  Ranking.findOneAndUpdate(query, {$push:{scores: req.body.score}}, {new:true}, function(err, ranking){
+    if(err){
+      res.status(500).send(err);
+    } else {
+      res.json(ranking);
+    }
+  })
 }

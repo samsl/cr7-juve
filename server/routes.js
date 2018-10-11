@@ -23,7 +23,9 @@ module.exports = function(app, upload) {
     app.post('/api/lineups', lineups.addLineup);
     app.put('/api/lineups/:id', lineups.updateLineup);
     app.get('/api/rankings', rankings.getRankings);
+    app.put('/api/rankings/:id', rankings.addResult);
     app.get('/api/shooters', shooters.getShooters);
+    app.put('/api/shooters/:name', shooters.goal);
     app.post('/api/users', users.register);
     app.post('/api/auth', users.login);
     app.get('*', function(req, res){

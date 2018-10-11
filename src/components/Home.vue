@@ -22,13 +22,15 @@
 				<td>{{ranking.l}}</td>
 				<td>{{ranking.gd}}</td>
 				<td>{{ranking.pts}}</td>
+				<td class="action-input"><font-awesome-icon v-if="editRankingIndex!==idx && $store.getters.authUser" icon="plus-circle" @click="editRankingIndex=idx"/><input class="home-input" v-if="editRankingIndex===idx && $store.getters.authUser" value="" @change="addResult(ranking.team, $event)">
+				</td>
 			</tr>
 		</table>
 	</div>
 		<div class="table-container">
 		<table class="mobile">
 			<caption>Top Scores
-				<select v-model="match" @onchange="sort()">
+				<select v-model="match">
 					<option value="l">League</option>
 					<option value="c">Champions League</option>
 					<option value="all">All</option>
@@ -45,6 +47,7 @@
 				<td class="ranking-logo"><div class="small-img"><img :src="'static/img/league logo/'+shooter.league+'.png'"></div></td>
 				<td>{{shooter.appearances}}</td>
 				<td>{{shooter.goals}}</td>
+				<td class="action-input"><font-awesome-icon v-if="editShooterIndex!==idx && $store.getters.authUser && match!=='all'"icon="plus-circle" @click="editShooterIndex=idx"/><input class="home-input" v-if="editShooterIndex === idx && $store.getters.authUser" value="" @change="addGoal(shooter.name, $event)"></td>
 			</tr>
 		</table>
 	</div>
@@ -54,6 +57,8 @@
 	export default{
 		data:function(){
 			return{
+				editRankingIndex: -1,
+				editShooterIndex: -1,
 				rankings:[],
 				shooters:[],
 				match: "all"
@@ -104,6 +109,31 @@
 			this.getShooters();
 		},
 		methods:{
+			addGoal(shooter, $event){
+				const goals = $event.target.value;
+				this.axios.put('/api/shooters/' + shooter, {score: goals, type: this.match}).then(response=>{
+					this.getShooters();
+					$event.target.value = '';
+				}).catch(err=>{
+					$event.target.value = '';
+				})
+				this.editShooterIndex = -1;
+			},
+			addResult(team, $event){
+				const result = $event.target.value;
+				const results = result.split(':').map(r=>parseInt(r));
+				if (results.length ===2 && !isNaN(results[0]) && !isNaN(results[1])) {
+					this.axios.put("/api/rankings/" + team._id, {'score':result}).then(response=>{
+						$event.target.value='';
+						this.getRankings();
+					}).catch(err=>{
+						$event.target.value='';
+					})
+				} else {
+					$event.target.value='';
+				}
+				this.editRankingIndex = -1;
+			},
 			getRankings(){
 				this.axios.get("/api/rankings").then(response=>{
 					this.rankings = response.data;	
@@ -168,5 +198,14 @@
 	.team-container{
 		@include centralize;
 		justify-content: start;
+	}
+	.action-input{
+		width: 75px;
+	}
+	.home-input{
+		border: 2px solid black;
+		width: 80%;
+		text-align: center;
+		font-size: 18px;
 	}
 </style>
