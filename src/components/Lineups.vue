@@ -3,7 +3,7 @@
 		<div class="lineup-panel">
 			<ul>
 				<li v-for="(lineup, idx) in lineups" @click="edit=idx===current?edit:false;choose(idx)" :class="{active: idx===current}" @dblclick="edit=true;input=lineup.name">
-					<span v-show="!edit || idx !==current" >{{lineup.name}}</span>
+					<span class="tab-title" v-show="!edit || idx !==current" >{{lineup.name}}</span>
 					<div class="tab-form" v-show="edit && idx===current">
 					<input type="text" v-model="input"/>
 					<font-awesome-icon icon="edit" @click="edit=false;lineup.name=input"/>
@@ -131,6 +131,7 @@
 	background: black;
 	vertical-align: bottom;
 	position: relative;
+	box-sizing: content-box !important;
 	ul{
 		padding: 0px 10px;
 		width: 100%;		
@@ -141,14 +142,17 @@
 		list-style: none;
 		display: flex;
 		align-items: flex-end;
+		
 		li {
-			width: 200px;
+			flex-basis: 200px;
+			padding: 5px 5px;
 			border-top-left-radius: 10px;
 			border-top-right-radius: 10px;
 			margin-right: 10px;
 			height: 30px;
+			flex-shrink: 1;
 			transition: height 0.5s; 
-			flex-grow: 1;
+			width: 0px;
 			background: #374955;
 			@include centralize;
 			&:last-child{
@@ -162,10 +166,10 @@
 
 }
 .active {
-	width:100%;
-	border: 3px solid $gold;
+    border: 3px solid $gold;
 	border-bottom: none;
 	position: relative;
+	flex-shrink: 0 !important;
 	&:after{
 		box-sizing: border-box;
 		content: "";
@@ -177,7 +181,7 @@
 		z-index: 10;
 	}
 	color: $gold;
-	height: 40px !important;
+	height: 50px !important;
 }	
 .players{
 	width: 360px;
@@ -217,6 +221,12 @@
 	background: green;
 
 }
+.tab-title{
+	max-width: inherit;
+	 overflow: hidden;
+     white-space: nowrap;
+     text-overflow: ellipsis;
+}
 
 #lineup-container{
 	
@@ -228,7 +238,14 @@
 @media only screen and (max-width: 768px){
   .lineup, .players{
     width:100%;
-  }  
+  }
+  .lineup-panel{
+  	ul{
+  		li{
+  			flex-basis: 100px;
+  		}
+  	}
+  }
 }
 
 </style>
