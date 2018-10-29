@@ -18,7 +18,13 @@
         </div>
 
    </div>
-  
+  <div class="video-container"></div>
+  <div class="video-container"></div>
+  <div class="video-container"></div>
+  <div class="video-container"></div>
+  <div class="video-container"></div>
+  <div class="video-container"></div>
+  <div class="video-container"></div>
 </div>
 </template>
 <script>
@@ -44,15 +50,18 @@ export default ({
 #video-list {
 	display: flex;
 	flex-wrap: wrap;
-
+    
 }
 .video-container {
     width: 210px;
-    margin: 5px 5px;
+    margin: 10px;
+    flex-grow:1;
     background: white;
     border: 2px solid white;
-    &:first-child{
-        margin-left: 0px;
+    &:nth-last-child(-n+7) {
+        height: 0;
+        border: none;
+        margin: 0px 10px;
     }
 }
 .video {    
