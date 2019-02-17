@@ -57,3 +57,30 @@ exports.addResult = function(req, res){
     }
   })
 }
+exports.updateResult = function(req, res) {
+  Ranking.find({}).populate({
+    path: "team",
+    match:{
+      name: req.body.name
+    }
+  }).exec(function(err, rankings){
+    if (err) {
+      res.status(500).send({"error": err, "message":"Cannot get rankings table" + req.body.name});
+    } else {     
+      const targets = rankings.filter(r=>r.team != null)
+      if (targets.length === 0) {
+        res.status(500).send({"error": err, "message":"Can not find club " + req.body.name});
+      }
+      const ranking = targets[0];
+      ranking.scores = req.body.scores;
+      ranking.save(err=>{
+        if (err) {
+          res.status(500).send({"error": err, "message":"Cannot update ranking table"});
+        } else {
+          res.json(ranking);
+        }
+      })
+    }
+  })
+  
+}
