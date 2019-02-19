@@ -17,7 +17,7 @@ var VideoSchema = new Schema({
 	},
 	matchType: {
 		type: String,
-		enum: ["Serie A", "Champions League", "Others"]
+		enum: ["Serie A", "Champions League", "Supercoppa", "Coppa Italia"]
 	},
 	opponent: {
 		type: Schema.Types.ObjectId,

@@ -38,6 +38,11 @@
             src: "/static/img/league logo/Coppa Italia.png",
             alt: "Coppa Italia",
             value: "Coppa Italia"
+        },
+        {
+            src: "/static/img/league logo/Supercoppa.png",
+            alt: "Supercoppa",
+            value: "Supercoppa"
         }],
         importances:[{
             alt: "LEAD",

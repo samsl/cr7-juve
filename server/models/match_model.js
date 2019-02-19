@@ -12,7 +12,7 @@ var MatchSchema = new Schema({
 	},
 	matchType: {
 		type: String, 
-		enum: ["Serie A", "Champions League", "Coppa Italia"]
+		enum: ["Serie A", "Champions League", "Coppa Italia", "Supercoppa"]
 	},
 	result: [Number]
 });
