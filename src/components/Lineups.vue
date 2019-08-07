@@ -1,8 +1,8 @@
 <template>
 	<div id="lineup-container">
-		<div class="lineup-panel">
+		<div class="tab-panel">
 			<ul>
-				<li v-for="(lineup, idx) in lineups" @click="edit=idx===current?edit:false;choose(idx)" :class="{active: idx===current}" @dblclick="edit=true;input=lineup.name">
+				<li v-for="(lineup, idx) in lineups" @click="edit=idx===current?edit:false;choose(idx)" :class="{'active-tab': idx===current}" @dblclick="edit=true;input=lineup.name">
 					<span class="tab-title" v-show="!edit || idx !==current" >{{lineup.name}}</span>
 					<div class="tab-form" v-show="edit && idx===current">
 					<input type="text" v-model="input"/>
@@ -125,64 +125,7 @@
 	}
 			
 }
-.lineup-panel{
-	width: 100%;	
-	height: 50px;
-	background: black;
-	vertical-align: bottom;
-	position: relative;
-	box-sizing: content-box !important;
-	ul{
-		padding: 0px 10px;
-		width: 100%;		
-		color: $silver;
-		font-size: 20px;
-		position: absolute;
-		bottom:0;
-		list-style: none;
-		display: flex;
-		align-items: flex-end;
-		
-		li {
-			flex-basis: 200px;
-			padding: 5px 5px;
-			border-top-left-radius: 10px;
-			border-top-right-radius: 10px;
-			margin-right: 10px;
-			height: 30px;
-			flex-shrink: 1;
-			transition: height 0.5s; 
-			width: 0px;
-			background: #374955;
-			@include centralize;
-			&:last-child{
-				margin-right: 0px;
-			}
-			&:hover{
-				cursor: pointer;
-			}
-		}
-	}
-
-}
-.active {
-    border: 3px solid $gold;
-	border-bottom: none;
-	position: relative;
-	flex-shrink: 0 !important;
-	&:after{
-		box-sizing: border-box;
-		content: "";
-		width: 100%;
-		left:0px;
-		position: absolute;
-		bottom: -3px;
-		border: 3px solid #374955;
-		z-index: 10;
-	}
-	color: $gold;
-	height: 50px !important;
-}	
+	
 .players{
 	width: 360px;
 	padding: 20px 0px;

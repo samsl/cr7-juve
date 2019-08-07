@@ -10,6 +10,9 @@ var MatchSchema = new Schema({
 		type: Schema.Types.ObjectId,
 		ref: "Club"
 	},
+	season: {
+		type: Schema.Types.ObjectId
+	},
 	matchType: {
 		type: String, 
 		enum: ["Serie A", "Champions League", "Coppa Italia", "Supercoppa"]

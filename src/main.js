@@ -20,7 +20,8 @@ new Vue({
   store,
   router,
   created(){
-  	this.$store.dispatch('getVideos');
+    this.$store.dispatch('getVideos');
+    this.$store.dispatch('getSeasons')
   },
   render: h => h(App)
 })

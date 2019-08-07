@@ -1,7 +1,9 @@
 const mongoose = require('mongoose'),
-  Ranking = mongoose.model('Ranking');
+  Ranking = mongoose.model('Ranking'),
+  ObjectId = mongoose.Types.ObjectId;
 exports.getRankings = function(req, res) {
-  Ranking.find({}).populate('team').exec((err, rankings) => {
+  const season = req.query.season;  
+  Ranking.find({"season": new ObjectId(season)}).populate('team').exec((err, rankings) => {
     if (err) {
       res.status(500).send(err);
     } else {

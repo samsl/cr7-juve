@@ -1,7 +1,9 @@
 const mongoose = require('mongoose'),
-	  Shooter = mongoose.model('Shooter');
+	  Shooter = mongoose.model('Shooter'),
+	  ObjectId = mongoose.Types.ObjectId;
 exports.getShooters = function(req, res){
-	Shooter.find({}).populate('club').exec((err, shooters)=>{
+	const season = req.query.season;  
+	Shooter.find({"season": new ObjectId(season)}).populate('club').exec((err, shooters)=>{
 		if (err){
 			res.status(500).send(err);
 		} else {

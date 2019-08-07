@@ -1,4 +1,5 @@
 var mongoose = require('mongoose'),
+    ObjectId = mongoose.Types.ObjectId,
 	Match = mongoose.model('Match');
 exports.addMatch = function(req, res){
 	var match = new Match(req.body);
@@ -11,7 +12,8 @@ exports.addMatch = function(req, res){
 	});
 };
 exports.getAllMatches = function(req, res){
-	Match.find({}).populate("home away").sort('date').exec((err, matches)=>{
+	const season = req.query.season;
+	Match.find({"season": new ObjectId(season)}).populate("home away").sort('date').exec((err, matches)=>{
 		if (err) {
 			res.status(500).send(err);
 		} else {

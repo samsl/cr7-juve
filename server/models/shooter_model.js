@@ -7,6 +7,7 @@ const ShooterSchema = new Schema({
     ref: 'Club'
   },
   leagueScores: [Number],
+  season: Schema.Types.ObjectId,
   eclScores:[Number],
   league: {
     type: String,

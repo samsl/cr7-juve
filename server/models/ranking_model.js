@@ -5,6 +5,7 @@ const RankingsSchema = new Schema({
 		type: Schema.Types.ObjectId,
 		ref: 'Club'
 	},
+	season: Schema.Types.ObjectId,
 	scores: [String]
 });
 mongoose.model('Ranking', RankingsSchema);	  
