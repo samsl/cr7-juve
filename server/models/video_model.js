@@ -15,6 +15,7 @@ var VideoSchema = new Schema({
 		type: Schema.Types.ObjectId,
 		ref: 'Player'
 	},
+	season: Schema.Types.ObjectId,
 	matchType: {
 		type: String,
 		enum: ["Serie A", "Champions League", "Supercoppa", "Coppa Italia"]
