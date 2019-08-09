@@ -9,7 +9,7 @@
 	export default ({
 		data: function(){
 			return {
-				navs: [{name:"HOME", link:"home"}, {name:"GOALS", link:"goals"}, {name:"FIXTURES", link:"fixtures"}, {name:"LINEUPS", link:"lineups"},{name:"DRAW", link:'draw'}]
+				navs: [{name:"HOME", link:"home"}, {name:"GOALS", link:"goals"}, {name:"FIXTURES", link:"fixtures"}, {name:"TROPHIES", link:"trophies"}, {name:"LINEUPS", link:"lineups"},{name:"DRAW", link:'draw'}]
 			}
 		}
 	})

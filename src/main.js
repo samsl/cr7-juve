@@ -21,7 +21,8 @@ new Vue({
   router,
   created(){
     this.$store.dispatch('getVideos');
-    this.$store.dispatch('getSeasons')
+    this.$store.dispatch('getSeasons');
+    this.$store.dispatch('getTrophies');
   },
   render: h => h(App)
 })

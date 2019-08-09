@@ -11,6 +11,7 @@ module.exports = function(app, upload) {
     const shooters = require('./controllers/shooters_controller');
     const users = require('./controllers/users_controller');
     const seasons = require('./controllers/seasons_controller');
+    const trophies = require('./controllers/trophies_controller');
     app.post('/api/videos', videos.addVideo);
     app.get('/api/videos', videos.getVideos);
     app.post('/api/files',upload.single('file'), videos.upload);
@@ -31,7 +32,8 @@ module.exports = function(app, upload) {
     app.post('/api/shooters', shooters.updateGoal);
     app.post('/api/users', users.register);
     app.post('/api/auth', users.login);
-    app.get('/api/seasons', seasons.getAllSeasons)
+    app.get('/api/seasons', seasons.getAllSeasons);
+    app.get('/api/trophies', trophies.getAllThrophies)
     app.get('*', function(req, res){
     	res.sendFile(decodeURI(req.url), {root: __dirname+"/../"});
     });

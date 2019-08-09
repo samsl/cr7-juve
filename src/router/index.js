@@ -6,6 +6,7 @@ import Lineups from '../components/Lineups'
 import Draw from '../components/Draw'
 import Video from '../components/Video'
 import Home from '../components/Home'
+import Trophies from '../components/Trophies'
 import Pages from '../components/Pages'
 import Login from '../components/Login'
 
@@ -28,6 +29,10 @@ export default new Router({
       path: 'fixtures',
       name:'fixtures',
       component: Fixtures
+    },{
+      path: 'trophies',
+      name:'trophies',
+      component: Trophies
     },{
       path: 'lineups',
       name: 'lineups',
