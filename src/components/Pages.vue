@@ -110,6 +110,7 @@ export default {
   width: 300px;
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 .title-trophy {
   width: 50px;
