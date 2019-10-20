@@ -59,7 +59,7 @@ exports.goal = function(req, res){
 exports.updateGoal = function(req, res) {
 	const query={
 		'name': req.body.name,
-		'season': req.params.season
+		'season': req.body.season
 	}
 	const goalType = req.body.type;
 	const goals = req.body.goals;
