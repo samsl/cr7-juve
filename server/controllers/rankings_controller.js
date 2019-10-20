@@ -49,7 +49,7 @@ exports.getRankings = function(req, res) {
   })
 };
 exports.addResult = function(req, res){
-  const query = {'team': req.params.id};
+  const query = {'team': req.params.id, 'season': req.params.season};
   console.log(req.body.score);
   Ranking.findOneAndUpdate(query, {$push:{scores: req.body.score}}, {new:true}, function(err, ranking){
     if(err){
@@ -60,7 +60,7 @@ exports.addResult = function(req, res){
   })
 }
 exports.updateResult = function(req, res) {
-  Ranking.find({}).populate({
+  Ranking.find({"season": new ObjectId(req.body.season)}).populate({
     path: "team",
     match:{
       name: req.body.name
